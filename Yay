@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Boyfriend Day 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #ffd6ff, #ffe6f2);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* ✉️ Prettier Envelope */
+    .envelope {
+      width: 150px;
+      height: 100px;
+      background: #ff4da6;
+      position: relative;
+      margin: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      animation: bounce 1.5s infinite;
+      overflow: hidden;
+    }
+    .envelope:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-left: 75px solid transparent;
+      border-right: 75px solid transparent;
+      border-bottom: 50px solid #ff99cc;
+    }
+    .envelope .seal {
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 30px;
+      left: 55px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #ff4da6;
+      box-shadow: 0 0 10px rgba(255,0,100,0.4);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Popup style */
+    .popup, .questions, .letter, .final, .end {
+      display: none;
+      font-size: 1.4rem;
+      margin-top: 20px;
+      animation: fadeInUp 0.8s ease-in-out;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .popup-card {
+      background: #fff;
+      padding: 15px 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      display: inline-block;
+      margin: 10px;
+      color: #ff4da6;
+      font-weight: bold;
+      transform: scale(0.95);
+      transition: 0.3s;
+    }
+    .popup-card:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      background: #ff4da6;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 1rem;
+      transition: 0.3s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .btn:hover {
+      background: #e60073;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      font-size: 1.8rem;
+      animation: float linear infinite;
+      z-index: 1;
+    }
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.6); opacity: 0; }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.2; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1.4); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Step 1 -->
+    <div id="envelope" class="envelope">
+      <div class="seal">💖</div>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="popup"></div>
+
+    <!-- Step 3 -->
+    <div id="questions"></div>
+
+    <!-- Step 4 -->
+    <div class="letter" id="letter">
+      <p>
+        Happy Boyfriend Day, my love 💕. I still can’t believe how lucky I am to have you!!!!!
+        From the day we met, you’ve been nothing but love, care, and happiness for me omggggg i lobeeee you so muchh meree sabseee pyareeeee cuteee bhonduuuuiuuu i lobe you i lobe youuuuuu !!!
+        You’re my comfort, my safe place, and my biggest blessing frrr! 
+        Even from miles apart, you make me feel closer than ever. 
+        I want you to know that I’m so proud to call you mine and I’ll love you more and more every single day cause you deserve everything mere budhe!!!! 
+        Thank you for being the sweetest boyfriend in the world , you are my forever. ❤️
+      </p>
+      <button class="btn" onclick="showFinal()">Next ➡️</button>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="final" id="final">
+      <p>💍 Will you be my one and only, forever and ever? 💖</p>
+      <button class="btn" onclick="showEnd()">Yes, foreverrr 😘</button>
+      <button class="btn" onclick="showEnd()">Always yours 💕</button>
+      <button class="btn" onclick="showEnd()">No escape, I’m stuck with you 😏❤️</button>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="end" id="end">
+      <h2>🌸 HAPPY PATI DIWAS AGAIN SAHU 💕✨</h2>
+      <h3>Daddy lobes you endlessly 💖</h3>
+    </div>
+  </div>
+
+  <script>
+    const popupTexts = [
+      "Haiiiiii my handsomee 😘",
+      "Happy Boyfriend Dayyy!!!! 💕",
+      "You’re the best thing ever happened to me 🥺",
+      "I lobe you endlessly, Sahu meri babygorl❤️"
+    ];
+    const questionsTexts = [
+      "Do you know you’re the most perfect boyfriend ever? 🥰",
+      "Will you let me be your annoying baddie forever? 😏👑",
+      "Do you like being spoiled with my love? 😘",
+      "Can I keep you forever and ever? 💖"
+    ];
+
+    let popupIndex = 0;
+    let questionIndex = 0;
+
+    const envelope = document.getElementById("envelope");
+    const popup = document.getElementById("popup");
+    const questions = document.getElementById("questions");
+    const letter = document.getElementById("letter");
+    const finalStep = document.getElementById("final");
+    const end = document.getElementById("end");
+
+    envelope.onclick = () => {
+      envelope.style.display = "none";
+      showPopups();
+    };
+
+    function showPopups() {
+      if (popupIndex < popupTexts.length) {
+        popup.innerHTML = `<div class="popup-card">${popupTexts[popupIndex]}</div>`;
+        popup.style.display = "block";
+        popupIndex++;
+        setTimeout(showPopups, 2000);
+      } else {
+        popup.style.display = "none";
+        showQuestions();
+      }
+    }
+
+    function showQuestions() {
+      if (questionIndex < questionsTexts.length) {
+        questions.innerHTML = `
+          <div class="popup-card">${questionsTexts[questionIndex]}</div>
+          <br>
+          <button class="btn" onclick="nextQuestion()">Yes 💖</button>
+        `;
+        questions.style.display = "block";
+      } else {
+        questions.style.display = "none";
+        letter.style.display = "block";
+      }
+    }
+
+    function nextQuestion() {
+      questionIndex++;
+      showQuestions();
+    }
+
+    function showFinal() {
+      letter.style.display = "none";
+      finalStep.style.display = "block";
+    }
+
+    function showEnd() {
+      finalStep.style.display = "none";
+      end.style.display = "block";
+      createHearts();
+      createSparkles();
+    }
+
+    function createHearts() {
+      const colors = ["💖","❤️","💜","💕"];
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 2 + 1.5) + "rem";
+        heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 7000);
+      }, 150);
+    }
+
+    function createSparkles() {
+      setInterval(() => {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDuration = (Math.random() * 2 + 1) + "s";
+        document.body.appendChild(sparkle);
+        setTimeout(() => { sparkle.remove(); }, 4000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
